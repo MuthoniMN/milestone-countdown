@@ -1,5 +1,6 @@
-import React, {  useState, Dispatch, SetStateAction } from "react";
+import React, {  useState, useEffect, Dispatch, SetStateAction } from "react";
 import { MilestoneContext } from "./index";
+import { milestones } from "../data/";
 
 export type TTask = {
   title: string,
@@ -13,26 +14,43 @@ export type TMilestoneContext = {
   description: string,
   dueDate: Date,
   started: boolean,
-  completed: boolean
+  completed: boolean,
+  next: string | null,
   tasks: TTask[],
+  val: typeof milestones,
+  setVal: Dispatch<SetStateAction<typeof milestones>>,
   setTasks: Dispatch<SetStateAction<TTask[]>>,
   setTitle: Dispatch<SetStateAction<string>>,
   setDescription: Dispatch<SetStateAction<string>>,
   setDueDate: Dispatch<SetStateAction<Date>>,
   setStarted: Dispatch<SetStateAction<boolean>>,
   setCompleted: Dispatch<SetStateAction<boolean>>,
+  setNext: Dispatch<SetStateAction<string|null>>
 }
 
 const MilestoneContextProvider = ({ children }: { children: React.ReactNode }) => {
-   const [title, setTitle] = useState(""); 
-   const [description, setDescription] = useState("");
-   const [dueDate, setDueDate] = useState(new Date());
-   const [started, setStarted] = useState(false);
+  const [val, setVal] = useState(milestones);
+   const [title, setTitle] = useState(val[0].title); 
+   const [description, setDescription] = useState(val[0].description);
+   const [dueDate, setDueDate] = useState(val[0].dueDate);
+   const [next, setNext] = useState<string | null>(val[1].title);
+   const [started, setStarted] = useState(true);
    const [completed, setCompleted] = useState(false);
-   const [tasks, setTasks] = useState<TTask[]>([]);
+   const [tasks, setTasks] = useState<TTask[]>(val[0].tasks);
 
+   useEffect(() => {
+    if(val[0].completed){
+      setTitle(val[1].title);
+      setDescription(val[1].description);
+      setDueDate(val[1].dueDate);
+      setStarted(true);
+      setCompleted(false);
+      setTasks(val[1].tasks);
+      setNext(null);
+    }
+   }, [completed, val])
    return (
-    <MilestoneContext.Provider value={{ title, description, dueDate, started, completed, tasks, setTasks, setCompleted, setStarted, setDueDate, setDescription, setTitle }}>
+    <MilestoneContext.Provider value={{ title, description, dueDate, started, completed, tasks, next, val, setNext, setVal, setTasks, setCompleted, setStarted, setDueDate, setDescription, setTitle }}>
       { children }
     </MilestoneContext.Provider>
    )
