@@ -2,7 +2,7 @@ export const milestones = [
   {
     title: "Individual Task",
     description: "In this milestone, you're expected to complete your task and any other where you have the required skillset",
-    dueDate: new Date(2025,0,9),
+    dueDate: new Date(2025,0,9,0,0,0,0),
     completed: false,
     started: false,
     tasks: [
@@ -35,7 +35,7 @@ export const milestones = [
  {
     title: "Team Project",
     description: "Collaboratively create an online campaign to promote the Rhedge Studios BootCamp.",
-    dueDate: new Date(2025,0,13),
+    dueDate: new Date(2025,0,13,0,0,0,0),
     completed: false,
     started: false,
     tasks: [
