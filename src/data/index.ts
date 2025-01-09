@@ -2,7 +2,7 @@ export const milestones = [
   {
     title: "Individual Task",
     description: "In this milestone, you're expected to complete your task and any other where you have the required skillset",
-    dueDate: new Date(2025,0,10,12,30,0,0),
+    dueDate: new Date(2025,0,10,22,0,0,0),
     completed: false,
     started: false,
     tasks: [

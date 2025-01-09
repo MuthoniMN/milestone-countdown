@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { MilestoneContext } from "../contexts/";
 import { TMilestoneContext } from "../contexts/MilestoneContext";
+import TimerRing from "./TimerRing";
 
 export default function Timer(){
   const { dueDate, setVal, val, setCompleted } = useContext(MilestoneContext) as TMilestoneContext;
@@ -26,27 +27,27 @@ export default function Timer(){
   }, [dueDate, setCompleted, val, setVal])
 
   return (
-    <h2 className="flex gap-4 items-center justify-center">
-      <p className="flex flex-col gap-2 items-center">
-        <span className="text-6xl">{Math.floor(newTime / (1000 * 60 * 60 * 24))}</span>
-        <span className="text-lg md:text-xl">DAYS</span>
-      </p>
-      <p className="text-6xl">:</p>
-      <p className="flex flex-col gap-2 items-center">
-        <span className="text-6xl">{Math.floor((newTime / (1000 * 60 * 60)) % 24)}</span>
-        <span className="text-lg md:text-xl">HOURS</span>
-      </p>
-      <p className="text-6xl">:</p>
-      <p className="flex flex-col gap-2 items-center">
-        <span className="text-6xl">{Math.floor((newTime / (1000 * 60)) % 60)}</span>
-        <span className="text-lg md:text-xl">MINS</span>
-      </p>
-      <p className="text-6xl">:</p>
-      <p className="flex flex-col gap-2 items-center">
-        <span className="text-6xl">{Math.floor((newTime / 1000) % 60)}</span>
-        <span className="text-lg md:text-xl">SEC</span>
-      </p>
-
-    </h2>
+    <h2 className="flex items-center justify-center w-full">
+    <TimerRing
+      timeLeft={Math.floor(newTime / (1000 * 60 * 60 * 24))}
+      totalTime={30}
+      label={"DAYS"}
+    />
+    <TimerRing
+      timeLeft={Math.floor((newTime / (1000 * 60 * 60)) % 24)}
+      totalTime={24}
+      label={"HOURS"}
+    />
+    <TimerRing
+      timeLeft={Math.floor((newTime / (1000 * 60)) % 60)}
+      totalTime={60}
+      label={"MINS"}
+    />
+    <TimerRing
+      timeLeft={Math.floor((newTime / 1000) % 60)}
+      totalTime={60}
+      label={"SECS"}
+    />
+   </h2>
   ); 
 }
