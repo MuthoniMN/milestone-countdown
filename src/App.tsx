@@ -1,7 +1,6 @@
 import Header from "./components/Header";
 import MilestoneContextProvider from "./contexts/MilestoneContext";
 import CountdownSection from "./components/CountdownSection";
-import Tasks from "./components/Tasks";
 import Milestone from "./components/Milestone";
 
 function App() {
