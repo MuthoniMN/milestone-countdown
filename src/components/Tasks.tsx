@@ -21,7 +21,7 @@ export default function Tasks(){
       <h3 className="text-3xl">Milestone Tasks: </h3>
       <ul className="flex flex-col space-y-2 divide-y-2 divide-[#3d016f]">
         { tasks.map((task: TTask,index: number) => (
-          <li key={index} onClick={()=> handleClick(index)} className="flex flex-col py-[2px] w-full gap-2 items-start task">
+          <li key={index} onClick={()=> handleClick(index)} className="flex flex-col py-[2px] w-full gap-2 items-start task hover:bg-[#36016f] hover:text-[#fafafa] hover:rounded-md hover:px-4 transition-all">
             <h4 className="text-md">{task.title}</h4>
             <p className="text-white text-xs bg-[#3d016f] w-auto px-4 py-0 rounded-full self-end">{task.skillset}</p>
             <div className={`${activeTab === index ? "block" : "hidden"} w-full`}>
