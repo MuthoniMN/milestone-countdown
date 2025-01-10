@@ -20,7 +20,7 @@ export default function Milestone(){
         ) 
           : prev ?(
           <p className="font-bold underline relative cursor-pointer" onClick={() => setOpen(open => !open)}>
-            Prev: {next}
+            Prev: {prev}
             <span className={`popuptext ${open && 'show'}`}>{val[0].description}</span>
           </p>
         )  :"The End!"}
