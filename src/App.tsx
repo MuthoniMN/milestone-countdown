@@ -5,9 +5,9 @@ import Milestone from "./components/Milestone";
 
 function App() {
   return (
-    <main className="flex flex-col items-center w-[100vw] h-full md:h-[75vh] gap-6 m-0 p-0">
+    <main className="flex flex-col items-center w-[100vw] h-[100vh] gap-6 m-0 p-0">
       <Header />
-      <section className="h-full w-full px-4 md:px-8 m-0 flex flex-col md:flex-row-reverse gap-4 items-center justify-center">
+      <section className="h-full w-full px-4 md:px-8 m-0 flex flex-col md:flex-row-reverse gap-4 items-center md:justify-center">
         <MilestoneContextProvider>
             <CountdownSection />
             <Milestone />
